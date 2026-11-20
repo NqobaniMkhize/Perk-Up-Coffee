@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PerkUp Coffee</title>
+<meta name="description" content="PerkUp Coffee: small-batch roasted, slow-brewed, poured fresh all day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFBF2; --surface:#FFFFFF; --ink:#16130F; --muted:#5E574C;
+  --blue:#1F3FD1; --on-blue:#FFF3C9; --butter:#FFE08A; --line:#E6DECB;
+  --display:'Bricolage Grotesque','Arial Narrow',Arial,sans-serif;
+  --body:'Instrument Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F0E0C; --surface:#1A1814; --ink:#F6EFE0; --muted:#B3AA98;
+    --blue:#3B5BFF; --on-blue:#FFF3C9; --butter:#FFE08A; --line:#2E2A23; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F0E0C; --surface:#1A1814; --ink:#F6EFE0; --muted:#B3AA98;
+  --blue:#3B5BFF; --on-blue:#FFF3C9; --butter:#FFE08A; --line:#2E2A23; color-scheme:dark;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+img,svg{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--butter);outline-offset:3px;box-shadow:0 0 0 5px var(--ink)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:var(--display);line-height:1.02;margin:0;letter-spacing:-.02em}
+h2{font-size:clamp(2rem,5vw,3.2rem);font-weight:800}
+p{margin:0 0 1em;max-width:62ch}
+
+/* nav */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--blue);z-index:30}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--blue);color:var(--on-blue)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:62px}
+.logo{font-family:var(--display);font-weight:800;font-size:1.5rem;text-decoration:none;letter-spacing:-.03em}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-weight:500;font-size:.95rem}
+.nav ul a:hover{text-decoration:underline;text-underline-offset:4px}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.btn{display:inline-block;font:600 1rem var(--body);padding:.8em 1.4em;border-radius:999px;border:2px solid var(--ink);background:var(--butter);color:#16130F;text-decoration:none;cursor:pointer}
+.btn:hover{background:#fff}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn.sm{padding:.45em 1em;font-size:.9rem;border-color:var(--on-blue)}
+.icon-btn{background:transparent;border:2px solid var(--on-blue);color:var(--on-blue);border-radius:999px;width:38px;height:38px;cursor:pointer;font-size:1rem}
+@media(max-width:760px){.nav ul{display:none}}
+
+/* hero */
+.hero{background:var(--blue);color:var(--on-blue);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center;padding-top:56px;padding-bottom:64px}
+.hero h1{font-size:clamp(3.2rem,11vw,8rem);font-weight:800;text-transform:none}
+.hero p.lead{font-size:1.2rem;margin:22px 0 28px;max-width:44ch}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero .btn.ghost{border-color:var(--on-blue)}
+.hero .btn.ghost:hover{background:var(--on-blue);color:var(--blue)}
+.cup{width:100%;max-width:340px;justify-self:center}
+.coffee-fill{transform-origin:bottom;animation:fill 2.4s cubic-bezier(.3,.7,.2,1) .3s both}
+@keyframes fill{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.steam path{stroke-dasharray:60;stroke-dashoffset:60;animation:steam 3s ease-out 2.2s infinite}
+.steam path:nth-child(2){animation-delay:2.6s}.steam path:nth-child(3){animation-delay:3s}
+@keyframes steam{0%{stroke-dashoffset:60;opacity:0}30%{opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}.cup{max-width:230px;order:-1;justify-self:start}}
+
+/* strip */
+.strip{background:var(--butter);color:#16130F;border-block:2px solid var(--ink)}
+.strip .wrap{display:flex;flex-wrap:wrap;gap:10px 36px;padding-top:14px;padding-bottom:14px;font-weight:600}
+
+section{padding:84px 0}
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.intro h2{margin-bottom:0}
+@media(max-width:760px){.intro{grid-template-columns:1fr;gap:20px}section{padding:60px 0}}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.fact{border-top:3px solid var(--blue);padding-top:14px}
+.fact h3{font-size:1.25rem;font-weight:800;margin-bottom:6px}
+.fact p{color:var(--muted);margin:0;font-size:.97rem}
+@media(max-width:760px){.facts{grid-template-columns:1fr}}
+
+/* menu */
+#menu{background:var(--surface);border-block:1px solid var(--line)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 22px}
+.tab{font:500 .95rem var(--body);padding:.55em 1.1em;border-radius:999px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.items{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+.items li{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.items b{font-family:var(--display);font-size:1.25rem;font-weight:800;letter-spacing:-.01em}
+.items .price{font-weight:600;font-variant-numeric:tabular-nums}
+.items span.d{grid-column:1;color:var(--muted);font-size:.95rem}
+.items .tag{grid-column:2;grid-row:2;justify-self:end;font-size:.8rem;background:var(--butter);color:#16130F;border-radius:6px;padding:1px 8px}
+.note{color:var(--muted);font-size:.9rem;margin-top:18px}
+@media(max-width:760px){.items{grid-template-columns:1fr}}
+
+/* beans */
+.beans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}
+.bag{background:var(--surface);border:2px solid var(--ink);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.bag h3{font-size:1.5rem;font-weight:800}
+.bag .meta{color:var(--muted);font-size:.93rem;margin:0}
+.roast{display:flex;gap:5px;margin-top:auto;padding-top:10px;align-items:center;font-size:.85rem;color:var(--muted)}
+.roast i{width:22px;height:8px;border-radius:4px;background:var(--line)}
+.roast i.on{background:var(--blue)}
+@media(max-width:760px){.beans{grid-template-columns:1fr}}
+
+/* loyalty */
+.loyal{background:var(--butter);color:#16130F;border-block:2px solid var(--ink)}
+.loyal .wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.card{background:#fff;border:2px solid #16130F;border-radius:18px;padding:22px}
+.dots{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:14px 0}
+.dot{aspect-ratio:1;border-radius:50%;border:2px solid #16130F;background:#fff;cursor:pointer;font:700 .9rem var(--body);color:#16130F;padding:0}
+.dot.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.card small{color:#4a4336}
+@media(max-width:760px){.loyal .wrap{grid-template-columns:1fr}}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media(max-width:760px){.visit{grid-template-columns:1fr;gap:34px}}
+.status{display:inline-flex;align-items:center;gap:8px;font-weight:600;margin:14px 0 10px}
+.status i{width:11px;height:11px;border-radius:50%;background:#9a9384}
+.status.open i{background:#1c9a4b}
+table{border-collapse:collapse;width:100%;max-width:420px}
+td{padding:7px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+tr.today td{font-weight:600;color:var(--blue)}
+:root[data-theme="dark"] tr.today td{color:var(--butter)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) tr.today td{color:var(--butter)}}
+label{display:block;font-weight:600;font-size:.93rem;margin:14px 0 5px}
+input,textarea,select{width:100%;font:inherit;color:var(--ink);background:var(--surface);border:2px solid var(--ink);border-radius:12px;padding:.7em .9em}
+textarea{min-height:110px;resize:vertical}
+.msg{margin-top:12px;font-weight:600;min-height:1.5em}
+
+footer{background:var(--ink);color:var(--bg);padding:44px 0 34px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:flex-end}
+footer .logo{font-size:2rem;display:block;margin-bottom:6px}
+footer p{margin:0;color:#B9B09C;font-size:.93rem}
+footer ul{list-style:none;margin:0;padding:0;display:flex;gap:20px;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}.steam path{stroke-dashoffset:0;opacity:.8}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">PerkUp</a>
+    <nav aria-label="Main"><ul>
+      <li><a href="#about">Our story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#beans">Beans</a></li>
+      <li><a href="#rewards">Rewards</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul></nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="theme" aria-label="Switch light or dark theme" title="Switch theme">◐</button>
+      <a class="btn sm ghost" href="#visit">Order ahead</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Perk Up.<br>It’s ready.</h1>
+      <p class="lead">Small-batch roasted beans, brewed slowly and poured fresh all day. Come in for a cup, or take a bag home.</p>
+      <div class="cta">
+        <a class="btn" href="#menu">See the menu</a>
+        <a class="btn ghost" href="#visit">Find us</a>
+      </div>
+    </div>
+    <svg class="cup" viewBox="0 0 300 300" role="img" aria-label="A cup of coffee filling up with steam rising">
+      <defs><clipPath id="inside"><path d="M62 118h156v70c0 34-28 60-78 60s-78-26-78-60z"/></clipPath></defs>
+      <g class="steam" fill="none" stroke="#FFF3C9" stroke-width="7" stroke-linecap="round">
+        <path d="M105 96c-14-18 14-30 0-52"/><path d="M140 96c-14-18 14-30 0-52"/><path d="M175 96c-14-18 14-30 0-52"/>
+      </g>
+      <g clip-path="url(#inside)"><rect class="coffee-fill" x="50" y="118" width="180" height="140" fill="#5A3416"/></g>
+      <path d="M62 118h156v70c0 34-28 60-78 60s-78-26-78-60z" fill="none" stroke="#FFF3C9" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M218 134h14c18 0 28 12 28 26s-10 26-28 26h-20" fill="none" stroke="#FFF3C9" stroke-width="8" stroke-linecap="round"/>
+      <rect x="50" y="262" width="180" height="9" rx="4.5" fill="#FFE08A"/>
+    </svg>
+  </div>
+</div>
+
+<div class="strip"><div class="wrap">
+  <span>Roasted every week</span><span>Oat, soy and almond milk at no extra charge</span><span>Bring a cup, take a discount</span>
+</div></div>
+
+<section id="about"><div class="wrap">
+  <div class="intro">
+    <h2>We started with a stovetop percolator and a stubborn opinion about coffee.</h2>
+    <div>
+      <p>PerkUp began as a weekend stall with one pot, one grinder and a line that kept getting longer. Today we roast in small batches, buy directly from growers we can name, and brew every cup to order.</p>
+      <p>No syrups hiding bad beans. Just good coffee, made carefully, at a fair price.</p>
+    </div>
+  </div>
+  <div class="facts">
+    <div class="fact"><h3>Traceable beans</h3><p>Every bag lists the farm, the altitude and the harvest, so you know exactly what you’re drinking.</p></div>
+    <div class="fact"><h3>Fresh, always</h3><p>We roast weekly and date every bag. Nothing sits on a shelf for months.</p></div>
+    <div class="fact"><h3>Low-waste cafe</h3><p>Compostable cups, a refill discount, and grounds given free to local gardeners.</p></div>
+  </div>
+</div></section>
+
+<section id="menu"><div class="wrap">
+  <h2>The menu</h2>
+  <div class="tabs" role="tablist" aria-label="Menu categories"></div>
+  <ul class="items" id="items" role="tabpanel"></ul>
+  <p class="note">Prices shown are examples. Ask us about allergens, and we’ll happily make any drink decaf.</p>
+</div></section>
+
+<section id="beans"><div class="wrap">
+  <h2>Take it home</h2>
+  <p style="margin-top:14px">Whole bean or ground to suit your brewer. 250 g bags, roasted to order.</p>
+  <div class="beans">
+    <article class="bag"><h3>House Perk</h3><p class="meta">Brazil and Colombia. Chocolate, toasted nuts, low acidity. Our all-day blend.</p>
+      <div class="roast" aria-label="Dark roast, 4 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i>&nbsp;Dark</div></article>
+    <article class="bag"><h3>Morning Rise</h3><p class="meta">Ethiopia. Blueberry, jasmine and lemon zest. Best brewed as pour-over.</p>
+      <div class="roast" aria-label="Light roast, 2 of 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i>&nbsp;Light</div></article>
+    <article class="bag"><h3>Midnight Pot</h3><p class="meta">Decaf, Swiss Water process. Caramel and cocoa without the late-night buzz.</p>
+      <div class="roast" aria-label="Medium roast, 3 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i>&nbsp;Medium</div></article>
+  </div>
+</div></section>
+
+<div class="loyal" id="rewards"><div class="wrap" style="padding-top:64px;padding-bottom:64px">
+  <div>
+    <h2>Every fifth cup is on us.</h2>
+    <p style="margin-top:14px">Join the PerkUp card at the counter. Tap a circle to see how it works.</p>
+  </div>
+  <div class="card">
+    <strong id="loyaltyTitle">Your card: 0 of 5</strong>
+    <div class="dots" id="dots"></div>
+    <small id="loyaltyMsg">Buy any drink to fill a circle.</small>
+  </div>
+</div></div>
+
+<section id="visit"><div class="wrap visit">
+  <div>
+    <h2>Come by</h2>
+    <p class="status" id="status"><i></i><span>Checking hours…</span></p>
+    <p>12 Roaster’s Lane<br>Your Town, 0000<br>hello@percupcoffee.example<br>+00 00 000 0000</p>
+    <table aria-label="Opening hours" id="hours"></table>
+  </div>
+  <div>
+    <h2>Say hello</h2>
+    <form id="contact" novalidate>
+      <label for="n">Name</label><input id="n" name="name" autocomplete="name" required>
+      <label for="e">Email</label><input id="e" name="email" type="email" autocomplete="email" required>
+      <label for="t">What’s it about?</label>
+      <select id="t"><option>A question</option><option>Catering and events</option><option>Wholesale beans</option><option>Feedback</option></select>
+      <label for="m">Message</label><textarea id="m" required></textarea>
+      <p class="msg" id="msg" role="status"></p>
+      <button class="btn" style="background:var(--blue);color:#fff;border-color:var(--blue)" type="submit">Send message</button>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div><a class="logo" href="#top">PerkUp Coffee</a><p>© 2026 PerkUp Coffee. Brewed with care.</p></div>
+  <ul><li><a href="#menu">Menu</a></li><li><a href="#beans">Beans</a></li><li><a href="#visit">Visit</a></li><li><a href="#top">Back to top</a></li></ul>
+</div></footer>
+
+<script>
+(function(){
+  var MENU={
+    "Hot coffee":[
+      ["Espresso","Double shot, thick crema.","3.00",""],
+      ["Flat white","Two shots, silky steamed milk.","4.20","Favourite"],
+      ["Latte","Espresso, lots of steamed milk.","4.40",""],
+      ["Cappuccino","Equal parts espresso, milk and foam.","4.20",""],
+      ["Americano","Espresso topped with hot water.","3.50",""],
+      ["Percolator pot","Our namesake. Serves two, slow-brewed.","7.50","House"]],
+    "Cold":[
+      ["Iced latte","Espresso, cold milk, ice.","4.60",""],
+      ["Cold brew","Steeped 18 hours, served over ice.","4.50","Favourite"],
+      ["Tonic espresso","Espresso over tonic and orange peel.","4.80",""],
+      ["Iced mocha","Dark chocolate, espresso, milk.","5.00",""]],
+    "Not coffee":[
+      ["Hot chocolate","Real chocolate, steamed milk.","4.20",""],
+      ["Chai latte","House-spiced, not from a mix.","4.40",""],
+      ["Loose-leaf tea","Ask for today’s selection.","3.40",""],
+      ["Fresh orange juice","Squeezed to order.","4.00",""]],
+    "Bites":[
+      ["Butter croissant","Baked each morning.","3.60",""],
+      ["Banana bread","Toasted with salted butter.","3.80","Vegan option"],
+      ["Cheese toastie","Mature cheddar, sourdough.","6.00",""],
+      ["Oat cookie","Chewy, with dark chocolate chunks.","2.80","Vegan"]]
+  };
+  var tabs=document.querySelector('.tabs'),list=document.getElementById('items'),names=Object.keys(MENU);
+  function show(cat){
+    list.innerHTML=MENU[cat].map(function(r){
+      return '<li><b>'+r[0]+'</b><span class="price">'+r[2]+'</span><span class="d">'+r[1]+'</span>'+(r[3]?'<span class="tag">'+r[3]+'</span>':'')+'</li>';
+    }).join('');
+    Array.prototype.forEach.call(tabs.children,function(b){b.setAttribute('aria-selected',b.textContent===cat)});
+  }
+  names.forEach(function(n,i){
+    var b=document.createElement('button');b.className='tab';b.setAttribute('role','tab');b.textContent=n;
+    b.onclick=function(){show(n)};tabs.appendChild(b);
+  });
+  show(names[0]);
+
+  /* loyalty card */
+  var dots=document.getElementById('dots'),count=0;
+  for(var i=1;i<=5;i++){(function(i){
+    var d=document.createElement('button');d.className='dot';d.textContent=i===5?'Free':i;d.setAttribute('aria-label','Cup '+i);
+    d.onclick=function(){count=(count===i)?i-1:i;draw()};dots.appendChild(d);
+  })(i)}
+  function draw(){
+    Array.prototype.forEach.call(dots.children,function(d,k){d.classList.toggle('on',k<count)});
+    document.getElementById('loyaltyTitle').textContent='Your card: '+count+' of 5';
+    document.getElementById('loyaltyMsg').textContent=count===5?'That’s a free drink. Show this card at the counter.':'Buy any drink to fill a circle.';
+  }
+
+  /* hours + open status (day 0 = Sunday) */
+  var H=[[8,15],[6.5,18],[6.5,18],[6.5,18],[6.5,18],[6.5,20],[7.5,20]];
+  var D=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  function fmt(h){var hh=Math.floor(h),mm=Math.round((h-hh)*60);var s=(hh%12||12)+(mm?':'+String(mm).padStart(2,'0'):'');return s+(hh>=12?' pm':' am')}
+  var now=new Date(),today=now.getDay(),cur=now.getHours()+now.getMinutes()/60;
+  document.getElementById('hours').innerHTML=[1,2,3,4,5,6,0].map(function(d){
+    return '<tr'+(d===today?' class="today"':'')+'><td>'+D[d]+'</td><td>'+fmt(H[d][0])+' – '+fmt(H[d][1])+'</td></tr>';
+  }).join('');
+  var open=cur>=H[today][0]&&cur<H[today][1],st=document.getElementById('status');
+  st.classList.toggle('open',open);
+  st.lastChild.textContent=open?'Open now, until '+fmt(H[today][1]):'Closed right now';
+
+  /* contact form (demo: validates, does not send) */
+  document.getElementById('contact').addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=document.getElementById('n').value.trim(),em=document.getElementById('e').value.trim(),m=document.getElementById('m').value.trim(),out=document.getElementById('msg');
+    if(!n||!/^\S+@\S+\.\S+$/.test(em)||!m){out.textContent='Please add your name, a valid email and a message.';return}
+    out.textContent='Thanks, '+n+'. Your message is ready to send once this form is connected to an inbox.';
+    this.reset();
+  });
+
+  /* theme toggle */
+  var root=document.documentElement;
+  document.getElementById('theme').onclick=function(){
+    var dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme=dark?'light':'dark';
+  };
+})();
+</script>
+</body>
+</html>
